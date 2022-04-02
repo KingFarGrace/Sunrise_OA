@@ -1,16 +1,23 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from '@/components/Login'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Index from '../views/Index'
+import Register from '../views/Register'
 
+const routes = [
+  {
+    path: '/Index',
+    name: 'Index',
+    component: Index
+  },
+  {
+    path: '/',
+    name: 'Register',
+    component: Register
+  },
+]
 
-Vue.use(Router)
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Login',
-      component: Login
-    }
-  ]
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
 })
+
+export default router
