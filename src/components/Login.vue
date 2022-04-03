@@ -81,6 +81,10 @@ export default {
         this.$message.error("请输入密码！");
         return;
       }
+      else{
+        alert("111");
+        this.$router.push({ path: "/home" });
+      }
     // else {
     //     校验用户名和密码是否正确;
     //     this.$router.push({ path: "/主页" });
