@@ -6,7 +6,7 @@
       </el-header>
       <el-main>
         <div class="content">
-          <div class="logo"></div>
+          <div class="logo"></div>   
           <el-card class="box-card">
             <div slot="header" class="clearfix">
               <span>账户登录</span>
@@ -23,6 +23,7 @@
                     show-password
                   ></el-input>
                 </el-form-item>
+                
                 <el-form-item>
                   <el-button @click="onSubmit()" icon="el-icon-upload" type="primary" plain
                     >登录</el-button
@@ -31,11 +32,15 @@
               </el-form>
             </div>
             <div class="option">
-              <div>忘记密码</div>
-              <div>注册账号</div>
+            <div class="option1">
+              <el-checkbox v-model="checked" class="remeberPwd">记住密码</el-checkbox>
             </div>
-            <!-- <router-link to="" >找回密码</router-link >
-            <router-link to="" >注册账号</router-link> -->
+            <div class="option2">
+              <div>忘记密码|</div>
+              <div><a a href="http://localhost:8080/#/register">注册账号</a></div>
+              <!-- <el-button @click="myfunction()">注册账号</el-button> -->
+            </div>
+            </div>
           </el-card>
         </div>
       </el-main>
@@ -69,7 +74,9 @@ export default {
             message:'请输入密码'
           }
         ]
-      }
+      },
+      //记住密码checked
+      checked:false
     }
   },
   methods: {
@@ -80,6 +87,10 @@ export default {
       } else if (!this.Form.password) {
         this.$message.error("请输入密码！");
         return;
+      }
+      else{
+        alert("111");
+        this.$router.push({ path: "/home" });
       }
     // else {
     //     校验用户名和密码是否正确;
@@ -98,7 +109,7 @@ export default {
     //         }
     //       });
     //   }
-    }
+    },
   }
 }
 </script>
@@ -108,12 +119,16 @@ export default {
   padding: 0;
   margin: 0;
 }
+#app{
+  background-image: url(../assets/background.jpg);
+  background-size: contain;
+}
 .el-header,
 .el-footer {
   background-color: #e9eef3;
   color: #333;
   text-align: start;
-  line-height: 60px;
+  line-height: 8vh;
 }
 .el-footer {
   text-align: center;
@@ -123,16 +138,21 @@ export default {
   /* border: 1px  solid  black; */
   font-weight: bold;
 }
-
-.box-card {
-  width: 420px;
+.box-card{
+  width: 410px;
+  height: 380px;
+  min-width: 410px;
+  opacity: 0.9;
 }
 .el-main {
   /* background-color: #e9eef3; */
   color: #333;
   text-align: center;
   line-height: 160px;
-  height: 633.5px;
+  height: 92vh;
+  margin: 0;
+  padding: 0;
+  margin-top: 100px;
 }
 .content {
   display: flex;
@@ -143,22 +163,32 @@ export default {
   height: 60px;
   line-height: 60px;
 }
-
+a{
+  text-decoration: none;
+}
 .option {
-  height: 20px;
   line-height: 20px;
   font-size: 12px;
   display: flex;
   justify-content: space-around;
   color: #666666;
 }
+.option2{
+  display: flex;
+  justify-content: space-around;
+}
+.content{
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
 .logo {
-  width: 400px;
-  height: 400px;
-  margin-left: 230px;
-  /* border: 1px solid #333; */
-  margin-right: 110px;
-  background: no-repeat center/80% url('../assets/logo.jpg');
+  width: 380px;
+  height: 380px;
+  /* border: 1px solid #333;  */
+  min-width: 380px;
+  background: no-repeat center/80% url('../assets/logo.png');
+  opacity: 0.9;
 }
 .el-button {
   width: 80%;
