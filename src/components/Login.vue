@@ -89,8 +89,7 @@ export default {
         return;
       }
       else{
-        alert("111");
-        this.$router.push({ path: "/home" });
+        this.$router.push({ path: "/main" });
       }
     // else {
     //     校验用户名和密码是否正确;
